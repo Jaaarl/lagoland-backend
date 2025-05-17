@@ -24,7 +24,19 @@ const reservationSchema = new mongoose.Schema({
     type: String,
     enum: ['morning', 'afternoon', 'morning and afternoon', 'overnight'],
     required: true
+  },
+  paymentStatus: {
+    type: String,
+    enum: ['paid', 'downpayment', 'cancelled'],
+    required: true,
+    default: 'downpayment'
+  },
+  downpaymentAmount: {
+    type: Number,
+    default: 0
+  },
+  cancelledAmount: {
+    type: Number, 
+    default: 0
   }
 });
-
-module.exports = mongoose.model('Reservation', reservationSchema);
